@@ -1,9 +1,27 @@
-require('dotenv').config();
-function selectCity() {
-  let cityInput = document.getElementById('cityInput')
+// require('dotenv').config();
 
-return cityInput
-}
+ let cityInputButton = document.getElementById("cityInputButton")
+
+// function selectCity() {
+//   let cityInput = document.getElementById('cityInput')
+
+//   console.log(cityInput)
+//     // return cityInput
+    
+// }
+
+cityInputButton.addEventListener("click", (e) => {
+    e.preventDefault();
+      let cityInput = document.getElementById('cityInput').value;
+      let ul = document.getElementById('cityList');
+      let button = document.createElement('button');
+    
+      button.textContent = cityInput
+
+    ul.appendChild(button);
+    // for loop to assign ID to button and append to local storage
+    // fetch text from buttonEl and store in api call
+});
 
 async function getWeatherForecast(cityInput) {
     const apiKey = '961c9d902ebd6fae639683183a4db270'; // replace with your OpenWeatherMap API key
@@ -50,5 +68,5 @@ async function getWeatherForecast(cityInput) {
     }
   }
   
-  getWeatherForecast();
+//   getWeatherForecast();
   
