@@ -1,6 +1,13 @@
-async function getWeatherForecast() {
+require('dotenv').config();
+function selectCity() {
+  let cityInput = document.getElementById('cityInput')
+
+return cityInput
+}
+
+async function getWeatherForecast(cityInput) {
     const apiKey = '961c9d902ebd6fae639683183a4db270'; // replace with your OpenWeatherMap API key
-    const cityName = 'Round Rock';
+    const cityName = cityInput;
     
     const url1 = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
   
