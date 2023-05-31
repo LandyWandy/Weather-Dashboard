@@ -1,27 +1,34 @@
 // require('dotenv').config();
 
- let cityInputButton = document.getElementById("cityInputButton")
+const cityInputButton = document.getElementById('cityInputButton');
 
-// function selectCity() {
-//   let cityInput = document.getElementById('cityInput')
-
-//   console.log(cityInput)
-//     // return cityInput
-    
-// }
+// Load cities from local storage at startup
+const storedCities = JSON.parse(localStorage.getItem('cities')) || [];
+storedCities.forEach(city => {
+    createButton(city);
+});
 
 cityInputButton.addEventListener("click", (e) => {
-    e.preventDefault();
-      let cityInput = document.getElementById('cityInput').value;
-      let ul = document.getElementById('cityList');
-      let button = document.createElement('button');
-    
-      button.textContent = cityInput
+  e.preventDefault();
+  
+  const cityInput = document.getElementById('cityInput').value;
+  
+  createButton(cityInput);
 
-    ul.appendChild(button);
-    // for loop to assign ID to button and append to local storage
-    // fetch text from buttonEl and store in api call
+  // Store cities in local storage
+  storedCities.push(cityInput);
+  localStorage.setItem('cities', JSON.stringify(storedCities));
 });
+
+function createButton(cityName) {
+  const ul = document.getElementById('cityList');
+  const button = document.createElement('button');
+
+  button.textContent = cityName;
+
+  ul.appendChild(button);
+}
+
 
 async function getWeatherForecast(cityInput) {
     const apiKey = '961c9d902ebd6fae639683183a4db270'; // replace with your OpenWeatherMap API key
