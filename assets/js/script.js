@@ -26,8 +26,15 @@ function createButton(cityName) {
 
   button.textContent = cityName;
 
+  button.classList.add('selectCityButton');
+
+  button.addEventListener('click', () => {
+    getWeatherForecast(cityName);
+  });
+
   ul.appendChild(button);
 }
+
 
 
 async function getWeatherForecast(cityInput) {
@@ -68,6 +75,17 @@ async function getWeatherForecast(cityInput) {
       const weatherData = await response.json();
       
       const temperature = weatherData.list[0].main.temp;
+
+      const cityName = weatherData.city.name
+
+      const currentCity = document.getElementById('currentCity')
+
+      currentCity.textContent = cityName
+
+      const weatherDataDiv = document.getElementById('weatherData')
+
+      weatherDataDiv.appendChild(currentCity)
+
       console.log(temperature)
       console.log(weatherData);
     } catch (error) {
