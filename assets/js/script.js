@@ -86,8 +86,8 @@ async function getWeatherForecast(cityInput) {
     windElement.textContent = "Wind: " + wind;
     humidityElement.textContent = "Humidity: " + humidity;
 
-    for(let i = 1; i <= 5; i++) {
-      createForecast(i, weatherData.list[i * 8]);
+    for(let i = 0; i < 5; i++) {
+      createForecast(i+1, weatherData.list[i * 8]);
   }
     
   } catch (error) {

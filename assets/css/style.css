@@ -27,3 +27,14 @@ main {
     padding: 10px; 
     margin-bottom: 10px; 
 }
+
+#cityList button {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#cityList {
+    list-style-type: none;
+}
+
