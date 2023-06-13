@@ -39,7 +39,7 @@ async function getWeatherForecast(cityInput) {
   const apiKey = '961c9d902ebd6fae639683183a4db270';
   const cityName = cityInput;
   
-  const url1 = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
+  const url1 = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
 
   let lat, lon;
 
@@ -61,7 +61,7 @@ async function getWeatherForecast(cityInput) {
     console.log('There was a problem with the fetch operation: ' + error.message);
   }
 
-  const url2 = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+  const url2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
 
   try {
     const response = await fetch(url2);
